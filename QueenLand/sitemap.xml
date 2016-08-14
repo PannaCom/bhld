@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+ <url><loc>http://queenland.vn/Home/</loc><changefreq>always</changefreq><priority>1</priority></url>
+ <url><loc>http://queenland.vn/news/list</loc><changefreq>always</changefreq><priority>0.98</priority></url> 
+ <url><loc>http://queenland.vn/projects/vinhomes-times-city-5</loc><changefreq>always</changefreq><priority>0.97</priority></url>
+ <url><loc>http://queenland.vn/projects/vinhomes-central-park-3</loc><changefreq>always</changefreq><priority>0.96</priority></url>
+ <url><loc>http://queenland.vn/projects/vinhomes-royal-city-4</loc><changefreq>always</changefreq><priority>0.95</priority></url>
+ <url><loc>http://queenland.vn/projects/vinhomes-nguyen-chi-thanh-6</loc><changefreq>always</changefreq><priority>0.94</priority></url>
+ <url><loc>http://queenland.vn/jobs/list</loc><changefreq>daily</changefreq><priority>0.92</priority></url>
+ <url><loc>http://queenland.vn/Home/About</loc><changefreq>weekly</changefreq><priority>0.91</priority></url> 
+ <url><loc>http://queenland.vn/Home/Contact</loc><changefreq>weekly</changefreq><priority>0.89</priority></url>
+</urlset>

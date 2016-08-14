@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<QueenLand.Models.projectcontent>
+@using PagedList.Mvc; 
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách Sản phẩm</h2>
+
+<div class="panel-heading">
+    <a href="/projectcontent/Create" class="fll" style="float:left;font-weight:bold;">Thêm mới</a>
+    <input name="name" type="text" id="name" value="@ViewBag.name" class="form-control fll" onkeyup="autosearch();" />
+    <button type="button" class="btn btn-default" onclick="search();">Tìm kiếm</button>
+</div>
+<table width="100%">
+    <tr>
+        <th>
+            Danh mục lớn
+        </th>
+        <th>
+            Danh mục nhỏ
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td id="td-@item.projectid-@item.id">
+            <script>getProjectName(@item.projectid,@item.id);</script>
+        </td>
+        <td id="item-@item.projectid-@item.id">
+            
+        </td>
+        <td>
+            <p>@Html.DisplayFor(modelItem => item.title)</p>
+           
+        </td>
+        <td>
+            <p><img src="@item.image" width=200 height=126 /></p>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |   
+            @Html.ActionLink("Details", "Details", new { id = item.id }, new { target="_blank"}) |            
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+    <script>getProjectItemName(@item.projectid,@item.itemid,@item.id);</script>
+}
+
+</table>
+<!-- /.col-lg-12 -->
+<div class="col-lg-12">
+    <ul class="pagination clearfix">
+        <li class="disabled"><a href="#">«</a></li>
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <text>
+                <li><a href="/projectcontent/Index?name=@ViewBag.name&page=@i">@i</a></li></text>
+        }
+    </ul>
+</div>
+
+<script>
+    function search(){
+      window.location.href = "/projectcontent/Index?name=" + document.getElementById("name").value;
+    }
+</script>

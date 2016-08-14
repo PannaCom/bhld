@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-sm-3">
+        <h3>DANH MỤC SẢN PHẨM</h3>
+        @Html.Raw(ViewBag.menuleft)
+    </div>
+    <div class="col-sm-9" style="padding-top:5px;">
+        @Html.Raw(@ViewBag.products)
+    </div>
+</div>

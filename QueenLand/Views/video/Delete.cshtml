@@ -1,0 +1,19 @@
+﻿@model QueenLand.Models.video
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa Video này</h3>
+<iframe src="@Model.linktube"
+   width="560" height="315" frameborder="0" allowfullscreen></iframe>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Xóa" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
