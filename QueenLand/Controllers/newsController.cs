@@ -48,8 +48,9 @@ namespace QueenLand.Controllers
             ViewBag.content = "<h1>" + news.title + "</h1>" + news.fullcontent;
             ViewBag.des = news.des;
             ViewBag.image = Config.domain + news.image;
-            ViewBag.url = Config.domain + "/news/details/" + Config.unicodeToNoMark(news.title) + "-" + id;
+            ViewBag.url = Config.domain + "tin/" + Config.unicodeToNoMark(news.title) + "-" + id;
             ViewBag.title = news.title;
+            ViewBag.keywords = news.keywords;
             return View(news);
         }
         //

@@ -15,7 +15,7 @@ namespace QueenLand
     public class Config
     {
 
-        public static string domain ="http://baoholaodongdonganh.com";// "http://localhost:55773/";//"";// "http://baoholaodongdonganh.com";
+        public static string domain ="http://baoholaodongdonganh.com/";// "http://localhost:55773/";//"";// "http://baoholaodongdonganh.com";
         public static int PageSize =5;
         public static string HotelImagePath = "/Images/Hotels";
         public static string NewsImagePath = "/Images/News";

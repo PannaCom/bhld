@@ -22,7 +22,7 @@
       <!-- Widget: Text -->
       <div class="col-md-9">
           @foreach (var item in Model) {
-              link = QueenLand.Config.domain+"/tin/"+QueenLand.Config.unicodeToNoMark(@item.title)+"-"+@item.id;
+              link = QueenLand.Config.domain+"tin/"+QueenLand.Config.unicodeToNoMark(@item.title)+"-"+@item.id;
               <div style="margin-bottom:25px;display:block;position:relative;float:left;"> 
                   <a href="@link" class="mask" style="display:block;position:relative;float:left;"><img src="@QueenLand.Config.domain/@item.image" alt="@item.title" class="imagenewslist" style="border:1px solid #808080"></a>
                   <div class="row rowimagenewslist" >
