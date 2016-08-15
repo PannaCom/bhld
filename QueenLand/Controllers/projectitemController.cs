@@ -34,12 +34,14 @@ namespace QueenLand.Controllers
                          {
                              id = q.id,
                              title = q.title,
-                             image = q.image,
+                             image = q.image,                            
                              project_name = q1.itemname,
                              project_id = q1.id,
+                             project_pr_id=q.projectid,
                          }
                          ).OrderByDescending(o => o.id);
                 var prs = p.ToList();
+                string des = "";
                 string projects = "";
                 string products = "";// "<div class=\"item\" style=\"width:100%;display:block;position:relative;float:left;background-color:#FFCA08;\"><table width=\"100%\" align=center><tr><td align=center>";//<table width=\"100%\"><tr>
                 for (int j = 0; j < prs.Count; j++)
@@ -51,9 +53,16 @@ namespace QueenLand.Controllers
                     }
                     string link = Config.domain + Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;
                     products += "<div class=\"col-sm-3\"><p><a href=\"" + link + "\">" + prs[j].title + "</a></p><p><a href=\"" + link + "\"><img src=\"" + prs[j].image + "\" style=\"width:173px;height:255px;\"></a></p></div>";
+                    des += prs[j].title + ", ";
                 }
 
                 ViewBag.products = products;
+                ViewBag.des = des;
+                ViewBag.image = Config.domain + prs[0].image;
+                var project_parent_name = db.projects.Find(prs[0].project_pr_id).name;
+                ViewBag.url = Config.domain + "danh-sach-san-pham-con/" + Config.unicodeToNoMark(project_parent_name) + "/" + Config.unicodeToNoMark(prs[0].project_name) + "-" + id;
+                ViewBag.title = prs[0].project_name;
+                ViewBag.keywords = des;
             }
             catch (Exception ex2)
             {

@@ -110,7 +110,7 @@ namespace QueenLand.Controllers
             {
                 nameFile = String.Format("{0}.jpg", filename + "-" + Guid.NewGuid().ToString());
                 fullPath = physicalPath + System.IO.Path.GetFileName(nameFile);
-                content += "<img src=\"" + Config.ProjectImagePath + "/" + nameFile + "\" width=200 height=126>";
+                content += "<img src=\"" + Config.ProductImagePath + "/" + nameFile + "\" width=200 height=126>";
                 if (System.IO.File.Exists(fullPath))
                 {
                     System.IO.File.Delete(fullPath);

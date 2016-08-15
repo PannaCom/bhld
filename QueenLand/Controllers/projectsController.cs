@@ -41,6 +41,7 @@ namespace QueenLand.Controllers
                          }
                          ).OrderByDescending(o => o.id);
                 var prs = p.ToList();
+                string des = "";
                 string projects = "";
                 string products = "";// "<div class=\"item\" style=\"width:100%;display:block;position:relative;float:left;background-color:#FFCA08;\"><table width=\"100%\" align=center><tr><td align=center>";//<table width=\"100%\"><tr>
                 for (int j = 0; j < prs.Count; j++)
@@ -52,9 +53,15 @@ namespace QueenLand.Controllers
                     }
                     string link = Config.domain + Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;
                     products += "<div class=\"col-sm-3\"><p><a href=\"" + link + "\">" + prs[j].title + "</a></p><p><a href=\"" + link + "\"><img src=\"" + prs[j].image + "\" style=\"width:173px;height:255px;\"></a></p></div>";
+                    des += prs[j].title + ", ";
                 }
 
                 ViewBag.products = products;
+                ViewBag.des = des;
+                ViewBag.image = Config.domain + prs[0].image;
+                ViewBag.url = Config.domain + "danh-sach-san-pham/" + Config.unicodeToNoMark(prs[0].project_name) + "-" + id;
+                ViewBag.title = prs[0].project_name;
+                ViewBag.keywords = des;
             }
             catch (Exception ex2)
             {
