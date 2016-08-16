@@ -16,8 +16,8 @@
         <EntityTypeShape EntityType="queenlandModel.slide" Width="1.5" PointX="2.75" PointY="7.75" />
         <EntityTypeShape EntityType="queenlandModel.user" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="queenlandModel.video" Width="1.5" PointX="8.75" PointY="3.75" />
-        <EntityTypeShape EntityType="queenlandModel.projectcontent" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="queenlandModel.news" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="queenlandModel.projectcontent" Width="1.5" PointX="5.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

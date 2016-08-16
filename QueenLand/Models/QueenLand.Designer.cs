@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Project\GitHub\Baoholaodongdonganh.Com\QueenLand\Models\QueenLand.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Project\GitHub\Baoholaodongdonganh.Com\bhld.git\trunk\QueenLand\Models\QueenLand.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

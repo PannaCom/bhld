@@ -28,7 +28,21 @@
       <div class="col-sm-9" style="padding-top:5px;">
           @Html.Raw(@ViewBag.products)
       </div>
-      <div class="col-sm-3" >
+      <div class="col-sm-3" style="border:1px solid #808080;">
+              <h3>Tin tức</h3>
+              @foreach (var item in ViewBag.news)
+              {
+                var link = QueenLand.Config.domain + "tin/" + QueenLand.Config.unicodeToNoMark(@item.title) + "-" + @item.id;
+                <div style="margin-bottom:25px;display:block;position:relative;float:left;">
+                    <a href="@link" class="col-sm-12" style="display:block;position:relative;float:left;"><img src="@QueenLand.Config.domain/@item.image" alt="@item.title" class="imagenewslist" style="border:1px solid #808080;width:100%;height:250px;"></a>
+                    <div class="col-sm-12">
+                        
+                            <b style="font-size:12px;margin-top:0px;"><a href="@link">@Html.Raw(@item.title)</a></b>
+                            <p class="intro">@Html.Raw(@item.des)</p>
+                       
+                    </div>
+                </div>
+              }
               <h3>Facebook</h3>
               <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FB%25E1%25BA%25A3o-h%25E1%25BB%2599-lao-%25C4%2591%25E1%25BB%2599ng-%25C4%2590%25C3%25B4ng-Anh-713137382158595%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=177010459310004" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
       </div>

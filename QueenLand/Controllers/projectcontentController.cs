@@ -57,6 +57,7 @@ namespace QueenLand.Controllers
                 ViewBag.title = content.title;
                 ViewBag.keywords = content.title + ", " + Config.unicodeToNoMark(content.title).Replace("-"," ") + ", " + parentPr.name;
                 ViewBag.catname = parentPr.name;
+                ViewBag.date_time = content.date_time;
             }
             catch (Exception ex)
             {
@@ -132,6 +133,7 @@ namespace QueenLand.Controllers
         {
             if (ModelState.IsValid)
             {
+                projectcontent.date_time = DateTime.Now;
                 db.projectcontents.Add(projectcontent);
                 db.SaveChanges();
                 return RedirectToAction("Index");

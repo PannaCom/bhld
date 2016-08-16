@@ -21,5 +21,6 @@ namespace QueenLand.Models
         public string des { get; set; }
         public string fullcontent { get; set; }
         public string image { get; set; }
+        public Nullable<System.DateTime> date_time { get; set; }
     }
 }

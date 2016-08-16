@@ -10,6 +10,7 @@
     </div>
     <div class="col-sm-9">
         <h1>@Html.Raw(ViewBag.title)</h1>
+        <span itemprop="datePublished" style="color:green;">@ViewBag.date_time</span>
         <b style="padding-right:5px;font-style:italic;position:relative;display:block;">Danh mục sản phẩm: @ViewBag.catname</b>
         <img src="@ViewBag.image" style="width:300px;height:350px;"/>
         @Html.Raw(ViewBag.content)        

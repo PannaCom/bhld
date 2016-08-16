@@ -84,6 +84,7 @@
           <Property Name="des" Type="ntext" />
           <Property Name="fullcontent" Type="ntext" />
           <Property Name="image" Type="nvarchar" MaxLength="150" />
+          <Property Name="date_time" Type="datetime" />
         </EntityType>
         <EntityType Name="projectitems">
           <Key>
@@ -157,8 +158,8 @@
           <EntitySet Name="slides" EntityType="queenlandModel.slide" />
           <EntitySet Name="users" EntityType="queenlandModel.user" />
           <EntitySet Name="videos" EntityType="queenlandModel.video" />
-          <EntitySet Name="projectcontents" EntityType="queenlandModel.projectcontent" />
           <EntitySet Name="news" EntityType="queenlandModel.news" />
+          <EntitySet Name="projectcontents" EntityType="queenlandModel.projectcontent" />
         </EntityContainer>
         <EntityType Name="about">
           <Key>
@@ -257,18 +258,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="linktube" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="projectcontent">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="projectid" Type="Int32" />
-          <Property Name="itemid" Type="Int32" />
-          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="news">
           <Key>
             <PropertyRef Name="id" />
@@ -280,6 +269,19 @@
           <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="datetime" Type="DateTime" Precision="3" />
           <Property Name="keywords" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="projectcontent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectid" Type="Int32" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="date_time" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -395,19 +397,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="projectcontents">
-            <EntityTypeMapping TypeName="queenlandModel.projectcontent">
-              <MappingFragment StoreEntitySet="projectcontents">
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
-                <ScalarProperty Name="des" ColumnName="des" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="itemid" ColumnName="itemid" />
-                <ScalarProperty Name="projectid" ColumnName="projectid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="news">
             <EntityTypeMapping TypeName="queenlandModel.news">
               <MappingFragment StoreEntitySet="news">
@@ -417,6 +406,20 @@
                 <ScalarProperty Name="des" ColumnName="des" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projectcontents">
+            <EntityTypeMapping TypeName="queenlandModel.projectcontent">
+              <MappingFragment StoreEntitySet="projectcontents">
+                <ScalarProperty Name="date_time" ColumnName="date_time" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="projectid" ColumnName="projectid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -7,7 +7,9 @@
 }
 
 <h2>Danh sách Sản phẩm</h2>
-
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
 <div class="panel-heading">
     <a href="/projectcontent/Create" class="fll" style="float:left;font-weight:bold;">Thêm mới</a>
     <input name="name" type="text" id="name" value="@ViewBag.name" class="form-control fll" onkeyup="autosearch();" />

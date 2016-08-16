@@ -27,7 +27,7 @@ namespace QueenLand.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public string UploadImageProcess(HttpPostedFileBase file, string filename)
         {
-            string physicalPath = HttpContext.Server.MapPath("../" + Config.ProjectImagePath + "\\");
+            string physicalPath = HttpContext.Server.MapPath("../" + Config.SlideImagePath + "\\");
             string nameFile = String.Format("{0}.jpg", Guid.NewGuid().ToString());
             int countFile = Request.Files.Count;
             string fullPath = physicalPath + System.IO.Path.GetFileName(nameFile);
@@ -40,8 +40,8 @@ namespace QueenLand.Controllers
                 Request.Files[i].SaveAs(fullPath);
                 break;
             }
-            string ok = resizeImage(Config.imgWidthBigSlide, Config.imgHeightBigSlide, fullPath, Config.ProjectImagePath + "/" + nameFile);
-            return Config.ProjectImagePath + "/" + nameFile;
+            //string ok = resizeImage(Config.imgWidthBigSlide, Config.imgHeightBigSlide, fullPath, Config.ProjectImagePath + "/" + nameFile);
+            return Config.SlideImagePath + "/" + nameFile;
         }
         public string resizeImage(int maxWidth, int maxHeight, string fullPath, string path)
         {

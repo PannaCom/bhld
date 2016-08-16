@@ -36,7 +36,7 @@ namespace QueenLand.Models
         public DbSet<slide> slides { get; set; }
         public DbSet<user> users { get; set; }
         public DbSet<video> videos { get; set; }
-        public DbSet<projectcontent> projectcontents { get; set; }
         public DbSet<news> news { get; set; }
+        public DbSet<projectcontent> projectcontents { get; set; }
     }
 }

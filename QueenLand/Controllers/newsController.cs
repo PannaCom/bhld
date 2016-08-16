@@ -45,7 +45,7 @@ namespace QueenLand.Controllers
                 return HttpNotFound();
             }
             ViewBag.menuleft = Config.getProjectMenu();
-            ViewBag.content = "<h1>" + news.title + "</h1>" + news.fullcontent;
+            ViewBag.content = "<h1>" + news.title + "</h1><span itemprop=\"datePublished\" style=\"color:green;\">"+news.datetime.Value+"</span>" + news.fullcontent;
             ViewBag.des = news.des;
             ViewBag.image = Config.domain + news.image;
             ViewBag.url = Config.domain + "tin/" + Config.unicodeToNoMark(news.title) + "-" + id;
