@@ -17,5 +17,6 @@ namespace QueenLand.Models
         public int id { get; set; }
         public Nullable<int> projectid { get; set; }
         public string itemname { get; set; }
+        public string fullcontent { get; set; }
     }
 }

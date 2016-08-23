@@ -24,6 +24,7 @@ namespace QueenLand
         public static string SlideImagePath = "/Images/slides";
         public static string ProjectImagePath = "/Images/Projects";
         public static string ProductImagePath = "/Images/Products";
+        public static string ProductCatImagePath = "/Images/Products/Cat";
         public static string ChouponImagePath = "/Images/choupon";
         public static string LogoImagePath = "/Images";
         public static int imgWidthHotelRoom = 750;

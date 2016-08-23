@@ -31,12 +31,12 @@ namespace QueenLand.Models
         public DbSet<homecat> homecats { get; set; }
         public DbSet<homecatitem> homecatitems { get; set; }
         public DbSet<job> jobs { get; set; }
-        public DbSet<projectitem> projectitems { get; set; }
         public DbSet<project> projects { get; set; }
         public DbSet<slide> slides { get; set; }
         public DbSet<user> users { get; set; }
         public DbSet<video> videos { get; set; }
         public DbSet<news> news { get; set; }
         public DbSet<projectcontent> projectcontents { get; set; }
+        public DbSet<projectitem> projectitems { get; set; }
     }
 }

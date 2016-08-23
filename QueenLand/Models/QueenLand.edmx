@@ -93,6 +93,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="projectid" Type="int" />
           <Property Name="itemname" Type="nvarchar" MaxLength="150" />
+          <Property Name="fullcontent" Type="ntext" />
         </EntityType>
         <EntityType Name="projects">
           <Key>
@@ -153,13 +154,13 @@
           <EntitySet Name="homecats" EntityType="queenlandModel.homecat" />
           <EntitySet Name="homecatitems" EntityType="queenlandModel.homecatitem" />
           <EntitySet Name="jobs" EntityType="queenlandModel.job" />
-          <EntitySet Name="projectitems" EntityType="queenlandModel.projectitem" />
           <EntitySet Name="projects" EntityType="queenlandModel.project" />
           <EntitySet Name="slides" EntityType="queenlandModel.slide" />
           <EntitySet Name="users" EntityType="queenlandModel.user" />
           <EntitySet Name="videos" EntityType="queenlandModel.video" />
           <EntitySet Name="news" EntityType="queenlandModel.news" />
           <EntitySet Name="projectcontents" EntityType="queenlandModel.projectcontent" />
+          <EntitySet Name="projectitems" EntityType="queenlandModel.projectitem" />
         </EntityContainer>
         <EntityType Name="about">
           <Key>
@@ -216,14 +217,6 @@
           <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="datetime" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="projectitem">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="projectid" Type="Int32" />
-          <Property Name="itemname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="project">
           <Key>
@@ -282,6 +275,15 @@
           <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="date_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="projectitem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectid" Type="Int32" />
+          <Property Name="itemname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -351,15 +353,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="projectitems">
-            <EntityTypeMapping TypeName="queenlandModel.projectitem">
-              <MappingFragment StoreEntitySet="projectitems">
-                <ScalarProperty Name="itemname" ColumnName="itemname" />
-                <ScalarProperty Name="projectid" ColumnName="projectid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="projects">
             <EntityTypeMapping TypeName="queenlandModel.project">
               <MappingFragment StoreEntitySet="projects">
@@ -419,6 +412,16 @@
                 <ScalarProperty Name="des" ColumnName="des" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="projectid" ColumnName="projectid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projectitems">
+            <EntityTypeMapping TypeName="queenlandModel.projectitem">
+              <MappingFragment StoreEntitySet="projectitems">
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
                 <ScalarProperty Name="projectid" ColumnName="projectid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

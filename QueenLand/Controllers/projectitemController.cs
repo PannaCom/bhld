@@ -63,6 +63,8 @@ namespace QueenLand.Controllers
                 ViewBag.url = Config.domain + "danh-sach-san-pham-con/" + Config.unicodeToNoMark(project_parent_name) + "/" + Config.unicodeToNoMark(prs[0].project_name) + "-" + id;
                 ViewBag.title = prs[0].project_name;
                 ViewBag.keywords = des;
+                var fullcontent = db.projectitems.Find(id).fullcontent;
+                ViewBag.fullcontent = fullcontent;
             }
             catch (Exception ex2)
             {
@@ -97,6 +99,31 @@ namespace QueenLand.Controllers
             if (Config.getCookie("logged") == "") return RedirectToAction("Login", "Admin");
             return View();
         }
+        [HttpPost]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public string UploadImageProcessContent(HttpPostedFileBase file, string filename)
+        {
+            string physicalPath = HttpContext.Server.MapPath("../" + Config.ProductCatImagePath + "\\");
+            string nameFile = String.Format("{0}.jpg", filename + "-" + Config.genCode());
+            int countFile = Request.Files.Count;
+            string fullPath = physicalPath + System.IO.Path.GetFileName(nameFile);
+            string content = "";
+            for (int i = 0; i < countFile; i++)
+            {
+                nameFile = String.Format("{0}.jpg", filename + "-" + Guid.NewGuid().ToString());
+                fullPath = physicalPath + System.IO.Path.GetFileName(nameFile);
+                content += "<img src=\"" + Config.ProductCatImagePath + "/" + nameFile + "\" width=200 height=126>";
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+                Request.Files[i].SaveAs(fullPath);
+                //break;
+            }
+            //string ok = resizeImage(Config.imgWidthNews, Config.imgHeightNews, fullPath, Config.NewsImagePath + "/" + nameFile);
+            //return Config.NewsImagePath + "/" + nameFile;
+            return content;
+        }
         public string getProjectName(int id) {
             var p = db.projects.Find(id);
             return p.name;
@@ -119,6 +146,7 @@ namespace QueenLand.Controllers
         // POST: /projectitem/Create
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create(projectitem projectitem)
         {
@@ -150,6 +178,7 @@ namespace QueenLand.Controllers
         // POST: /projectitem/Edit/5
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(projectitem projectitem)
         {

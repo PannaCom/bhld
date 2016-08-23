@@ -6,7 +6,7 @@
 }
 
 <h2>Thêm mới</h2>
-
+<script src="/Scripts/ckeditor/ckeditor.js"></script>
 @using (Html.BeginForm("Edit", "projectitem", FormMethod.Post, new { id = "EditForm" }))
 {
     @Html.AntiForgeryToken()
@@ -27,6 +27,32 @@
                 </select>
               </div>
          </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Chèn ảnh vào bài viết</label>
+                <input name="imageFileContent" type="file" id="imageFileContent" value="" multiple="multiple" class="form-control" runat="server" onchange="uploadProcessContent();" />
+                <div id="progressbarContent" class="progressbar">
+                    <div id="progresslabelContent" class="progressbarlabel"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="room" style="width:auto;display:block;">List ảnh bài viết</label>
+                <div id="imageShowContent" style="width:auto;height:auto;"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Nội dung</label>
+                <textarea name="fullcontent" id="fullcontent" rows="20" cols="80">
+                    @Model.fullcontent
+                </textarea>
+                <script>
+                    CKEDITOR.replace('fullcontent');
+                </script>
+            </div>
+        </div>
         <p>
             <button type="button" class="btn btn-info" onclick="checkField();">Sửa</button>
         </p>
@@ -80,4 +106,60 @@
             }
         }
     }
+    //Image upload
+    function uploadProcessContent() {
+        var title = unicodeToNoMark($("#itemname").val());
+        if (title.trim() == "") {
+            alert("Nhập tên danh mục");
+            document.getElementById("itemname").focus();
+            document.getElementById('imageFileContent').value = "";
+            return;
+        }
+        var formdata = new FormData(); //FormData object
+        var fileInput = document.getElementById('imageFileContent');
+        for (i = 0; i < fileInput.files.length; i++) {
+            //Appending each file to FormData object
+            formdata.append(fileInput.files[i].name, fileInput.files[i]);
+            //break;
+        }
+        formdata.append("filename", title);
+        showLoadingImage();
+        var xhr = new XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+                var progress = Math.round(evt.loaded * 100 / evt.total);
+                $("#progressbarContent").progressbar("value", progress);
+            }
+        }, false);
+
+        xhr.open('POST', '/projectitem/UploadImageProcessContent');
+        xhr.send(formdata);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //$('#imageShowContent').append("<img src=\"" + xhr.responseText + "\" width=200 height=126>");
+                $('#imageShowContent').append(xhr.responseText);
+                hideLoadingImage();
+            }
+        }
+        return false;
+    }
+    $("#progressbar").progressbar({
+        max: 100,
+        change: function (evt, ui) {
+            $("#progresslabel").text($("#progressbar").progressbar("value") + "%");
+        },
+        complete: function (evt, ui) {
+            $("#progresslabel").text("File upload successful!");
+        }
+    });
+    $("#progressbarContent").progressbar({
+        max: 100,
+        change: function (evt, ui) {
+            $("#progresslabelContent").text($("#progressbarContent").progressbar("value") + "%");
+        },
+        complete: function (evt, ui) {
+            $("#progresslabelContent").text("File upload successful!");
+        }
+    });
+    evt.preventDefault();
 </script>
