@@ -2251,4 +2251,5 @@ border: 1px solid;
 p {
     margin: 0 0 10px;
     line-height: 180%;
+	text-align:justify;
 }

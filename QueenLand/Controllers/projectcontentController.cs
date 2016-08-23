@@ -166,6 +166,7 @@ namespace QueenLand.Controllers
         {
             if (ModelState.IsValid)
             {
+                projectcontent.date_time = DateTime.Now;
                 db.Entry(projectcontent).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
