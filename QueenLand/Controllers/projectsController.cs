@@ -48,7 +48,7 @@ namespace QueenLand.Controllers
                 {
                     if (prs[j].project_name != projects)
                     {
-                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\" style=\"color:white;\">" + prs[j].project_name + "</div>";
+                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\" style=\"color:white;font-weight:bold;\">" + prs[j].project_name.ToUpperInvariant() + "</div>";
                         projects = prs[j].project_name;
                     }
                     string link = Config.domain + Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;
@@ -62,6 +62,8 @@ namespace QueenLand.Controllers
                 ViewBag.url = Config.domain + "danh-sach-san-pham/" + Config.unicodeToNoMark(prs[0].project_name) + "-" + id;
                 ViewBag.title = prs[0].project_name;
                 ViewBag.keywords = des;
+                var fullcontent = db.projects.Find(id).fullcontent;
+                ViewBag.fullcontent = fullcontent;
             }
             catch (Exception ex2)
             {
@@ -132,6 +134,7 @@ namespace QueenLand.Controllers
         // POST: /projects/Create
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create(project project)
         {
@@ -205,6 +208,7 @@ namespace QueenLand.Controllers
         // POST: /projects/Edit/5
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(project project)
         {

@@ -48,7 +48,7 @@ namespace QueenLand.Controllers
                 {
                     if (prs[j].project_name != projects)
                     {
-                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\" style=\"color:white;\">" + prs[j].project_name + "</div>";
+                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\" style=\"color:white;font-weight:bold;\">" + prs[j].project_name.ToUpperInvariant() + "</div>";
                         projects = prs[j].project_name;
                     }
                     string link = Config.domain + Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;

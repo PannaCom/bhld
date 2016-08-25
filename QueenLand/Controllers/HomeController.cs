@@ -56,7 +56,7 @@ namespace QueenLand.Controllers
                 for (int j = 0; j < prs.Count; j++)
                 {
                     if (prs[j].project_name != projects) {
-                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\"><a href=\"/danh-sach-san-pham/" + Config.unicodeToNoMark(prs[j].project_name) + "-" + prs[j].project_id + "\" style=\"color:white;\">" + prs[j].project_name + "</a></div>";
+                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\"><a href=\"/danh-sach-san-pham/" + Config.unicodeToNoMark(prs[j].project_name) + "-" + prs[j].project_id + "\" style=\"color:white;font-weight:bold;\">" + prs[j].project_name.ToUpperInvariant() + "</a></div>";
                         projects = prs[j].project_name;
                     }
                     link = Config.domain +Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;
