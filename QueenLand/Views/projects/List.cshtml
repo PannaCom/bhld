@@ -3,15 +3,17 @@
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-9" style="padding-top:5px;margin-left:12px;border:1px solid #ff0000;">
+        @Html.Raw(@ViewBag.products)
+        <a href="=btn">
+    </div>
+    <div class="col-sm-2">
         <h3>DANH MỤC SẢN PHẨM</h3>
         @Html.Raw(ViewBag.menuleft)
     </div>
-    <div class="col-sm-9" style="padding-top:5px;">
-        @Html.Raw(@ViewBag.products)
-    </div>
-    <div class="col-sm-3">&nbsp;</div>
-    <div class="col-sm-9" style="padding-top:5px;">
+    <div class="col-sm-9" style="padding-top:5px;margin-left:12px;border:1px solid #ff0000;">
         @Html.Raw(@ViewBag.fullcontent)
+        <div class="col-sm-12"><a href="tel:0988046655" class="btn btn-success">Gọi ngay 0988046655</a></div>
     </div>
+    <div class="col-sm-2">&nbsp;</div>
 </div>

@@ -65,7 +65,7 @@
 #cssmenu {
   background: #1F497D;
   border-bottom: 4px solid #1b9bff;
-  font-family: Roboto, Tahoma, Arial, sans-serif;
+  font-family: Arial, Helvetica,sans-serif;
   font-size: 12px;
 }
 #cssmenu > ul {

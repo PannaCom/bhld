@@ -1,35 +1,4 @@
-﻿@font-face {
-  font-family: 'UTM Kabel KT';
-  font-style: normal;
-  src: local('UTM Kabel KT'), local('UTM Kabel KT'), url(../fonts/a.ttf) format('tff');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Regular'), local('Roboto-Regular'), url(../fonts/Roboto-Regular.ttf) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Roboto Light'), local('Roboto-Light'), url(../fonts/Roboto-Light.ttf) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(../fonts/Roboto-Medium.ttf) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(../fonts/Roboto-Bold.ttf) format('woff');
-}
+﻿
 @charset "utf-8";
 /* Table of contents - Starhotel: Main Theme CSS by Slashdown
 ====================================================  
@@ -148,7 +117,7 @@ html, html a {
 }
 /* Headings */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: "Roboto", "Arial", "sans-serif";
+	font-family: "Arial",Helvetica, "sans-serif";
 	font-weight: 600;
 	line-height: 1.1;
 	color: #2D2B76;
@@ -200,7 +169,7 @@ h1 i, h2 i, h3 i, h4 i h5 i {
 }
 /* Fonts */
 body ,.ui-widget, .revolution-starhotel  {
-	font-family: "Roboto", "Arial", "sans-serif !important";
+	font-family: "Arial",Helvetica, "sans-serif !important";
 	font-size: 13px;
 }
 a {
@@ -2021,7 +1990,7 @@ border: 1px solid;
 	font-weight: 600;
 	font-size: 45px;
 	line-height: 55px;
-	font-family: "Roboto";
+	font-family: Arial,Helvetica;
 	margin: 0px;
 	border-width: 0px;
 	border-style: none;
@@ -2044,7 +2013,7 @@ border: 1px solid;
 	font-weight: normal;
 	font-size: 30px;
 	line-height: 30px;
-	font-family: "Roboto";
+	font-family: Arial,Helvetica;
 	margin: 0px;
 	border-width: 0px;
 	border-style: none;
