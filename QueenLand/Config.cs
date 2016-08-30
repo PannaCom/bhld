@@ -391,7 +391,7 @@ namespace QueenLand
                         menuleft += "<div id=dvmenuview_" + mn[i].projectid + "><a href=\"" + link + "\"><b>" + mn[i].projectname.ToUpperInvariant() + "</b></a>&nbsp;<span class=\"glyphicon glyphicon-plus\" style=\"float:right;cursor:pointer;\" id=menuview_" + mn[i].projectid + " onclick=\"viewMenuItem(" + mn[i].projectid + ")\"></span></div>";
                     }
                     link = "/danh-sach-san-pham-con/" + Config.unicodeToNoMark(mn[i].projectname) + "/" + Config.unicodeToNoMark(mn[i].itemname) + "-" + mn[i].itemid;
-                    string style = "style=\"display:none;\"";                    
+                    string style = "style=\"display:block;\"";                    
                     menuleft += "<div id=dvmenuview_" + mn[i].projectid + "_" + i + " " + style + ">&nbsp;&nbsp;-<a href=\"" + link + "\">" + mn[i].itemname.ToUpperInvariant() + "</a></div>";
                 }
             }
