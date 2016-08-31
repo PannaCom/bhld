@@ -52,7 +52,7 @@ namespace QueenLand.Controllers
                         projects = prs[j].project_name;
                     }
                     string link = Config.domain + Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;
-                    products += "<div class=\"col-sm-3\"><p><a href=\"" + link + "\">" + prs[j].title + "</a></p><p><a href=\"" + link + "\"><img src=\"" + prs[j].image + "\" style=\"width:173px;height:255px;\"></a></p></div>";
+                    products += "<div class=\"col-sm-3\" style=\"height: 290px;\"><p style=\"height: 47px;\"><a href=\"" + link + "\">" + prs[j].title + "</a></p><p><a href=\"" + link + "\"><img src=\"" + prs[j].image + "\" style=\"width:173px;height:225px;\"></a></p></div>";
                     des += prs[j].title + ", ";
                 }
 
