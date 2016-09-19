@@ -16,13 +16,15 @@
             <div class="twitter" style="float:left;position:relative;display:block;margin-left:25px;"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="vn" url="@ViewBag.url"></a></div>
             <div class="g-plus" data-action="share" data-annotation="bubble" style="float:left;position:relative;display:block;"></div>            
         </div>
+        <div class="col-sm-12">@Html.Raw(ViewBag.products)</div>
     </div>
     <div class="col-sm-2">
         <h3>DANH MỤC SẢN PHẨM</h3>
         @Html.Raw(ViewBag.menuleft)
-    </div>
-    
+    </div>    
 </div>   
-<script>
-    optimizeImageMobile();
-</script>
+
+
+    <script>
+        optimizeImageMobile();
+    </script>

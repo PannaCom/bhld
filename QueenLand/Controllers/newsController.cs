@@ -35,6 +35,10 @@ namespace QueenLand.Controllers
             int pageSize = Config.PageSize;
             int pageNumber = (page ?? 1);
             ViewBag.page = page;
+            ViewBag.des = "Tin tức bảo hộ lao động và thiết bị phòng sạch chống tĩnh điện trang " + pageNumber;
+            //ViewBag.image = Config.domain + db.;
+            ViewBag.url = Config.domain + "tin?page=" + +pageNumber;
+            ViewBag.keywords = "bảo hộ lao động, thiết bị phòng sạch, chống tĩnh điện, thiết bị phòng sạch, đồng phục, ngón cao su, găng tay phòng sạch,thảm dính bụi, vải chống tĩnh điện, vòng chống tĩnh điện, dây tiếp đất";
             return View(p.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult GetDetails(int id = 0)

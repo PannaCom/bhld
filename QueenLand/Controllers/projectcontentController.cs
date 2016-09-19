@@ -58,6 +58,36 @@ namespace QueenLand.Controllers
                 ViewBag.keywords = content.title + ", " + Config.unicodeToNoMark(content.title).Replace("-"," ") + ", " + parentPr.name;
                 ViewBag.catname = parentPr.name;
                 ViewBag.date_time = content.date_time;
+
+                var p = (from q1 in db.projects
+                         where q1.id == parentPr.id 
+                         join q in db.projectcontents on q1.id equals q.projectid 
+                         select new
+                         {
+                             id = q.id,
+                             title = q.title,
+                             image = q.image,
+                             project_name = q1.name,
+                             project_id = q1.id,
+                         }
+                        ).OrderByDescending(o => o.id);
+                var prs = p.ToList();
+                //string des = "";
+                string projects = "";
+                string products = "";// "<div class=\"item\" style=\"width:100%;display:block;position:relative;float:left;background-color:#FFCA08;\"><table width=\"100%\" align=center><tr><td align=center>";//<table width=\"100%\"><tr>
+                for (int j = 0; j < prs.Count; j++)
+                {
+                    if (prs[j].id == id) continue;
+                    if (prs[j].project_name != projects)
+                    {
+                        products += "<div style=\"background:#74b709;color:#ffffff;height:40px;float:left;position:relative;width:100%;text-align:left;padding-top:10px;padding-left:10px;\" style=\"color:white;font-weight:bold;\">SẢN PHẨM CÙNG LOẠI</div>";
+                        projects = prs[j].project_name;
+                    }
+                    string link = Config.domain + Config.unicodeToNoMark(prs[j].title) + "-" + prs[j].id;
+                    products += "<div class=\"col-sm-3\" style=\"height: 290px;\"><p style=\"height: 47px;\"><a href=\"" + link + "\">" + prs[j].title + "</a></p><p><a href=\"" + link + "\"><img src=\"" + prs[j].image + "\" style=\"width:173px;height:225px;\"></a></p></div>";
+                    //des += prs[j].title + ", ";
+                }
+                ViewBag.products = products;
             }
             catch (Exception ex)
             {

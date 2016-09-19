@@ -179,8 +179,8 @@ namespace QueenLand.Controllers
             var newImage = new Bitmap(newWidth, newHeight);
             Graphics thumbGraph = Graphics.FromImage(newImage);
 
-            thumbGraph.CompositingQuality = CompositingQuality.HighQuality;
-            thumbGraph.SmoothingMode = SmoothingMode.HighQuality;
+            thumbGraph.CompositingQuality = CompositingQuality.HighSpeed;
+            thumbGraph.SmoothingMode = SmoothingMode.HighSpeed;
             //thumbGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             thumbGraph.DrawImage(image, 0, 0, newWidth, newHeight);

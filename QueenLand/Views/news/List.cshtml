@@ -1,8 +1,9 @@
 ﻿@model PagedList.IPagedList<QueenLand.Models.news>
 @using PagedList.Mvc; 
 @{
-    ViewBag.Title = "List";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.title = "Tin tức bảo hộ lao động thiết bị phòng sạch chống tĩnh điện";
+    ViewBag.image = QueenLand.Config.domain+""+Model[0].image;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
     string link = "";
 }
   <div class="row"> 
