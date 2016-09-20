@@ -44,6 +44,8 @@ namespace QueenLand
         public static int imgWidthLogo2 = 1224;//for mobile
         public static int imgHeightLogo2 = 313;
         public static string imgSlideWidth = "292px";
+        public static int imgWidthProduct = 300;
+        public static int imgHeightProduct = 350;
         private static queenlandEntities db = new queenlandEntities();
         public static int datetimeid()
         {

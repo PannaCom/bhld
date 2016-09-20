@@ -7,6 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using QueenLand.Models;
 using PagedList;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using ImageProcessor.Web;
+using ImageProcessor.Processors;
+using ImageProcessor.Imaging;
 namespace QueenLand.Controllers
 {
     public class projectcontentController : Controller
@@ -125,7 +130,7 @@ namespace QueenLand.Controllers
                 Request.Files[i].SaveAs(fullPath);
                 break;
             }
-            //string ok = resizeImage(Config.imgWidthNews, Config.imgHeightNews, fullPath, Config.NewsImagePath + "/" + nameFile);
+            string ok = resizeImage(Config.imgWidthNews, Config.imgHeightNews, physicalPath, nameFile);
             return Config.ProductImagePath + "/" + nameFile;
         }
         [HttpPost]
@@ -149,9 +154,57 @@ namespace QueenLand.Controllers
                 Request.Files[i].SaveAs(fullPath);
                 //break;
             }
-            //string ok = resizeImage(Config.imgWidthNews, Config.imgHeightNews, fullPath, Config.NewsImagePath + "/" + nameFile);
+            //string ok = resizeImage(Config.imgWidthNews, Config.imgHeightNews, physicalPath, nameFile);
             //return Config.NewsImagePath + "/" + nameFile;
             return content;
+        }
+        public string test()
+        {
+            return "ok";
+            var p = (from q in db.projectcontents select q).ToList();
+            for (int i = 0; i < p.Count;i++)
+            {
+                string physicalPath = HttpContext.Server.MapPath("../" + Config.ProductImagePath + "\\");
+                string nameFile = p[i].image.Replace("/Images/Products/", "");
+                //return resizeImage(Config.imgWidthProduct, Config.imgHeightProduct, physicalPath + nameFile, Config.ProductImagePath + "/" + nameFile);
+                ImageProcessor.ImageFactory iFF = new ImageProcessor.ImageFactory();
+                ////Tạo ra file thumbail không có watermark
+                Size size1 = new Size(Config.imgWidthProduct, Config.imgHeightProduct);
+                iFF.Load(physicalPath + nameFile).Resize(size1).BackgroundColor(Color.WhiteSmoke).Save(physicalPath + nameFile);
+                //iFF.Load(physicalPath + nameFile).co(Color.White).Resize(size1).Save(physicalPath + nameFile);
+            }
+            return "ok";
+        }
+        public string resizeImage(int maxWidth, int maxHeight, string fullPath, string path)
+        {
+            string physicalPath = fullPath;
+            string nameFile = path;
+            //return resizeImage(Config.imgWidthProduct, Config.imgHeightProduct, physicalPath + nameFile, Config.ProductImagePath + "/" + nameFile);
+            ImageProcessor.ImageFactory iFF = new ImageProcessor.ImageFactory();
+            ////Tạo ra file thumbail không có watermark
+            Size size1 = new Size(Config.imgWidthProduct, Config.imgHeightProduct);
+            iFF.Load(physicalPath + nameFile).BackgroundColor(Color.WhiteSmoke).Resize(size1).Save(physicalPath + nameFile);
+            return "ok";
+            //var image = System.Drawing.Image.FromFile(fullPath);
+            //var ratioX = (double)maxWidth / image.Width;
+            //var ratioY = (double)maxHeight / image.Height;
+            //var ratio = Math.Min(ratioX, ratioY);
+            //var newWidth = (int)(image.Width * ratioX);
+            //var newHeight = (int)(image.Height * ratioY);
+            //var newImage = new Bitmap(newWidth, newHeight);
+            //Graphics thumbGraph = Graphics.FromImage(newImage);
+
+            //thumbGraph.CompositingQuality = CompositingQuality.HighSpeed;
+            //thumbGraph.SmoothingMode = SmoothingMode.HighSpeed;
+           
+            ////thumbGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            //thumbGraph.DrawImage(image, 0, 0, newWidth, newHeight);
+            //image.Dispose();
+
+            //string fileRelativePath = path;// "newsizeimages/" + maxWidth + Path.GetFileName(path);
+            //newImage.Save(HttpContext.Server.MapPath(fileRelativePath), newImage.RawFormat);
+            //return fileRelativePath;
         }
         //
         // POST: /projectcontent/Create
